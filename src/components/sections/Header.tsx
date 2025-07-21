@@ -22,37 +22,73 @@ const navigationItems = [
     name: "Servicios",
     path: "/servicios",
     subItems: [
-      { name: "Alquiler de Maquinaria", path: "/servicios/alquiler-maquinaria", description: "Flota moderna y certificada." },
-      { name: "Proyectos de Construcción", path: "/servicios/proyectos-construccion", description: "Soluciones integrales para obras." },
-      { name: "Servicios Mineros", path: "/servicios/servicios-mineros", description: "Operaciones seguras y eficientes." },
-      { name: "Operación de Equipos", path: "/servicios/operacion-equipos", description: "Personal calificado y experto." },
+      {
+        name: "Alquiler de Maquinaria",
+        path: "/servicios/alquiler-maquinaria",
+        description: "Flota moderna y certificada.",
+      },
+      {
+        name: "Proyectos de Construcción",
+        path: "/servicios/proyectos-construccion",
+        description: "Soluciones integrales para obras.",
+      },
+      {
+        name: "Servicios Mineros",
+        path: "/servicios/servicios-mineros",
+        description: "Operaciones seguras y eficientes.",
+      },
+      {
+        name: "Operación de Equipos",
+        path: "/servicios/operacion-equipos",
+        description: "Personal calificado y experto.",
+      },
     ],
   },
   {
     name: "Nosotros",
     path: "/nosotros",
     subItems: [
-      { name: "Historia y Misión", path: "/nosotros/historia", description: "Nuestra trayectoria y valores." },
-      { name: "Certificaciones", path: "/nosotros/certificaciones", description: "Compromiso con la calidad." },
-      { name: "Equipo Profesional", path: "/nosotros/equipo", description: "Conoce a nuestros expertos." },
+      {
+        name: "Historia y Misión",
+        path: "/nosotros/historia",
+        description: "Nuestra trayectoria y valores.",
+      },
+      {
+        name: "Certificaciones",
+        path: "/nosotros/certificaciones",
+        description: "Compromiso con la calidad.",
+      },
+      {
+        name: "Equipo Profesional",
+        path: "/nosotros/equipo",
+        description: "Conoce a nuestros expertos.",
+      },
     ],
   },
   {
     name: "Proyectos",
     path: "/proyectos",
     subItems: [
-        { name: "Obras Civiles", path: "/proyectos/obras-civiles", description: "Infraestructura que conecta." },
-        { name: "Proyectos Mineros", path: "/proyectos/proyectos-mineros", description: "Desarrollo para la minería." },
-        { name: "Casos de Éxito", path: "/proyectos/casos-exito", description: "Resultados que nos respaldan." },
-    ]
+      {
+        name: "Obras Civiles",
+        path: "/proyectos/obras-civiles",
+        description: "Infraestructura que conecta.",
+      },
+      {
+        name: "Proyectos Mineros",
+        path: "/proyectos/proyectos-mineros",
+        description: "Desarrollo para la minería.",
+      },
+      {
+        name: "Casos de Éxito",
+        path: "/proyectos/casos-exito",
+        description: "Resultados que nos respaldan.",
+      },
+    ],
   },
   {
     name: "Equipos",
     path: "/equipos",
-  },
-  {
-    name: "Contacto",
-    path: "/contacto",
   },
 ];
 
@@ -63,18 +99,24 @@ export function Header() {
   return (
     <header className="bg-stone-900/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 border-b border-stone-800">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-white">
-          Andes<span className="text-amber-400">Maq</span>
+        <Link href="/" className="text-2xl font-bold text-white" legacyBehavior>
+          <span className="text-white">
+            Andes
+            <span className="text-amber-400">Maq</span>
+          </span>
         </Link>
-        
+
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             {navigationItems.map((item) => (
               <NavigationMenuItem key={item.path}>
                 {item.subItems ? (
                   <>
-                    <NavigationMenuTrigger 
-                      className={cn("bg-transparent text-stone-300 hover:text-amber-400 focus:text-amber-400 data-[active]:bg-stone-800/50 data-[state=open]:bg-stone-800/50", { "text-amber-400": pathname.startsWith(item.path) })}
+                    <NavigationMenuTrigger
+                      className={cn(
+                        "bg-transparent text-stone-300 hover:text-amber-400 focus:text-amber-400 data-[active]:bg-stone-800/50 data-[state=open]:bg-stone-800/50",
+                        { "text-amber-400": pathname.startsWith(item.path) }
+                      )}
                     >
                       {item.name}
                     </NavigationMenuTrigger>
@@ -85,7 +127,9 @@ export function Header() {
                             key={subItem.path}
                             href={subItem.path}
                             title={subItem.name}
-                            className={cn({ "bg-stone-800": pathname === subItem.path})}
+                            className={cn({
+                              "bg-stone-800": pathname === subItem.path,
+                            })}
                           >
                             {subItem.description}
                           </ListItem>
@@ -95,7 +139,16 @@ export function Header() {
                   </>
                 ) : (
                   <Link href={item.path} legacyBehavior passHref>
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-stone-300 hover:text-amber-400 hover:bg-stone-800/50 focus:bg-stone-800/50", { "text-amber-400 bg-stone-800/50": pathname === item.path })}>
+                    <NavigationMenuLink
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        "bg-transparent text-stone-300 hover:text-amber-400 hover:bg-stone-800/50 focus:bg-stone-800/50",
+                        {
+                          "text-amber-400 bg-stone-800/50":
+                            pathname === item.path,
+                        }
+                      )}
+                    >
                       {item.name}
                     </NavigationMenuLink>
                   </Link>
@@ -106,7 +159,7 @@ export function Header() {
         </NavigationMenu>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Button asChild>
+          <Button asChild className="animate-pulse">
             <Link href="/cotizacion">Cotizar Ahora</Link>
           </Button>
         </div>
@@ -118,25 +171,36 @@ export function Header() {
                 <Menu className="h-6 w-6 text-white" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="bg-stone-900 text-white border-l-stone-800">
+            <SheetContent
+              side="left"
+              className="bg-stone-900 text-white border-l-stone-800"
+            >
               <div className="flex flex-col space-y-2 p-4">
                 {navigationItems.map((item) => (
                   <div key={item.path}>
                     <Link
                       href={item.path}
-                      className={cn("block py-2 px-4 text-lg font-semibold hover:bg-stone-800 rounded-md", { "text-amber-400": pathname.startsWith(item.path)})}
+                      className={cn(
+                        "block py-2 px-4 text-lg font-semibold hover:bg-stone-800 rounded-md",
+                        { "text-amber-400": pathname.startsWith(item.path) }
+                      )}
                       onClick={() => !item.subItems && setIsMenuOpen(false)}
+                      legacyBehavior
                     >
                       {item.name}
                     </Link>
                     {item.subItems && (
                       <div className="pl-4 border-l border-stone-700 ml-4">
                         {item.subItems.map((subItem) => (
-                           <Link
+                          <Link
                             key={subItem.path}
                             href={subItem.path}
-                            className={cn("block py-2 px-4 text-stone-300 hover:bg-stone-800 rounded-md", { "text-amber-400": pathname === subItem.path})}
+                            className={cn(
+                              "block py-2 px-4 text-stone-300 hover:bg-stone-800 rounded-md",
+                              { "text-amber-400": pathname === subItem.path }
+                            )}
                             onClick={() => setIsMenuOpen(false)}
+                            legacyBehavior
                           >
                             {subItem.name}
                           </Link>
@@ -174,7 +238,9 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none text-amber-400">{title}</div>
+          <div className="text-sm font-medium leading-none text-amber-400">
+            {title}
+          </div>
           <p className="line-clamp-2 text-sm leading-snug text-stone-400">
             {children}
           </p>

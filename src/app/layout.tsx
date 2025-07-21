@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
+import { ChatWidget } from "@/components/ui/ChatWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Breadcrumbs />
         <main>{children}</main>
         <Footer />
+        <ChatWidget />
       </body>
     </html>
   );

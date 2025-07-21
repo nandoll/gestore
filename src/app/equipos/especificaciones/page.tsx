@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { FileText } from "lucide-react";
 
 const PageSection = ({ title, children }: { title: React.ReactNode, children: React.ReactNode }) => (

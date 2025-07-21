@@ -1,4 +1,5 @@
 import { AboutUs } from "@/components/sections/AboutUs";
+import { Clients } from "@/components/sections/Clients";
 import { Contact } from "@/components/sections/Contact";
 import { Equipment } from "@/components/sections/Equipment";
 import { Hero } from "@/components/sections/Hero";
@@ -9,10 +10,11 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Projects />
       <Services />
       <AboutUs />
-      <Projects />
       <Equipment />
+      <Clients />
       <Contact />
     </>
   );

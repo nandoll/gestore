@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const PageSection = ({ title, children }: { title: React.ReactNode, children: React.ReactNode }) => (
     <section className="py-20 bg-stone-900">
