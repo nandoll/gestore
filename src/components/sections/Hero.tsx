@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const containerVariants = {
@@ -21,7 +21,7 @@ const itemVariants = {
     opacity: 1,
     transition: {
       duration: 0.8,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 };
@@ -76,7 +76,10 @@ export function Hero() {
           Maximizamos la productividad de tu proyecto con maquinaria de última
           generación y un equipo experto comprometido con tus objetivos.
         </motion.p>
-        <motion.div className="mt-8 flex justify-center gap-4" variants={itemVariants}>
+        <motion.div
+          className="mt-8 flex justify-center gap-4"
+          variants={itemVariants}
+        >
           <Button asChild size="lg">
             <Link href="/cotizacion">Solicita una cotización</Link>
           </Button>
