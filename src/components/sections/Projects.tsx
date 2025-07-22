@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion, AnimatePresence, easeOut, easeIn } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -12,7 +12,7 @@ const projectsData = [
     title: "Expansión Minera del Sur",
     description:
       "Movimiento masivo de tierras y construcción de accesos para uno de los proyectos mineros más importantes de la región.",
-    image: "/images/slide_6.png",
+    image: "/images/landing/proyecto-minero.webp",
     link: "/proyectos/expansion-minera",
   },
   {
@@ -20,7 +20,8 @@ const projectsData = [
     title: "Carretera Interoceánica",
     description:
       "Participación clave en la construcción de uno de los tramos más complejos de la vía, superando desafíos geográficos.",
-    image: "/images/slide_7.png",
+    image: "/images/landing/proyecto-civil.webp",
+
     link: "/proyectos/carretera-interoceanica",
   },
   {
@@ -28,7 +29,7 @@ const projectsData = [
     title: "Plataforma para Planta de Gas",
     description:
       "Nivelación y compactación para la instalación de una planta de procesamiento, cumpliendo con los más altos estándares.",
-    image: "/images/slide_8.png",
+    image: "/images/landing/proyecto-industrial.webp",
     link: "/proyectos/planta-gas",
   },
 ];
@@ -36,14 +37,14 @@ const projectsData = [
 const categories = ["Minería", "Obra Civil", "Industrial"];
 
 const imageVariants = {
-  hidden: { opacity: 0, transition: { duration: 0.5, ease: easeOut } },
-  visible: { opacity: 0.75, transition: { duration: 0.8, ease: easeIn } },
+  hidden: { opacity: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  visible: { opacity: 0.75, transition: { duration: 0.8, ease: "easeIn" } },
 };
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOut } },
-  exit: { opacity: 0, y: -20, transition: { duration: 0.3, ease: easeIn } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.3, ease: "easeIn" } },
 };
 
 export function Projects() {

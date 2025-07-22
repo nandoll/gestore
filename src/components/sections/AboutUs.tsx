@@ -29,17 +29,10 @@ export function AboutUs() {
     <section id="nosotros" className="py-20 bg-stone-800/50">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             <Image
-              src="/images/slide_4.png"
+              src="/images/landing/nosotros.webp"
               alt="Operador en cabina de excavadora"
-              width={400}
-              height={400}
-              className="rounded-lg shadow-lg w-full h-full object-cover"
-            />
-            <Image
-              src="/images/slide_5.png"
-              alt="Maquinaria trabajando en terreno"
               width={400}
               height={400}
               className="rounded-lg shadow-lg w-full h-full object-cover"

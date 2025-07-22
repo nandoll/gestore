@@ -1,11 +1,11 @@
 import Image from "next/image";
 
 const equipment = [
-  { src: "/images/4.1.png", alt: "Excavadoras" },
-  { src: "/images/4.2.png", alt: "Volquetes" },
-  { src: "/images/4.3.png", alt: "Rodillos" },
-  { src: "/images/4.5.png", alt: "Cargadores Frontales" },
-  { src: "/images/4.4.png", alt: "Motoniveladoras" },
+  { src: "/images/landing/flota-4.1.webp", alt: "Excavadoras" },
+  { src: "/images/landing/flota-4.2.webp", alt: "Volquetes" },
+  { src: "/images/landing/flota-4.3.webp", alt: "Rodillos" },
+  { src: "/images/landing/flota-4.4.webp", alt: "Cargadores Frontales" },
+  { src: "/images/landing/flota-4.5.webp", alt: "Motoniveladoras" },
 ];
 
 export function Equipment() {

@@ -40,7 +40,7 @@ export function Hero() {
           muted
           playsInline
           className="w-full h-full object-cover"
-          poster="/images/slide_3.png" // Placeholder image while video loads
+          poster="/images/landing/proyectos-4.webp" // Placeholder image while video loads
         >
           <source src="/images/hero.mp4" type="video/mp4" />
           Tu navegador no soporta el tag de video.

@@ -13,7 +13,12 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -99,7 +104,7 @@ export function Header() {
   return (
     <header className="bg-stone-900/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 border-b border-stone-800">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-white" legacyBehavior>
+        <Link href="/" className="text-2xl font-bold text-white">
           <span className="text-white">
             Andes
             <span className="text-amber-400">Maq</span>
@@ -138,20 +143,19 @@ export function Header() {
                     </NavigationMenuContent>
                   </>
                 ) : (
-                  <Link href={item.path} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        "bg-transparent text-stone-300 hover:text-amber-400 hover:bg-stone-800/50 focus:bg-stone-800/50",
-                        {
-                          "text-amber-400 bg-stone-800/50":
-                            pathname === item.path,
-                        }
-                      )}
-                    >
-                      {item.name}
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      "bg-transparent text-stone-300 hover:text-amber-400 hover:bg-stone-800/50 focus:bg-stone-800/50",
+                      {
+                        "text-amber-400 bg-stone-800/50":
+                          pathname === item.path,
+                      }
+                    )}
+                  >
+                    <Link href={item.path}>{item.name}</Link>
+                  </NavigationMenuLink>
                 )}
               </NavigationMenuItem>
             ))}
@@ -175,6 +179,7 @@ export function Header() {
               side="left"
               className="bg-stone-900 text-white border-l-stone-800"
             >
+              <SheetTitle className="text-2xl font-bold mb-4">Menú</SheetTitle>
               <div className="flex flex-col space-y-2 p-4">
                 {navigationItems.map((item) => (
                   <div key={item.path}>
@@ -185,7 +190,6 @@ export function Header() {
                         { "text-amber-400": pathname.startsWith(item.path) }
                       )}
                       onClick={() => !item.subItems && setIsMenuOpen(false)}
-                      legacyBehavior
                     >
                       {item.name}
                     </Link>
@@ -200,7 +204,6 @@ export function Header() {
                               { "text-amber-400": pathname === subItem.path }
                             )}
                             onClick={() => setIsMenuOpen(false)}
-                            legacyBehavior
                           >
                             {subItem.name}
                           </Link>

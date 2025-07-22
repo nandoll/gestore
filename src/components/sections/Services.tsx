@@ -5,7 +5,7 @@ import {
   motion,
   AnimatePresence,
   useAnimationControls,
-  easeInOut,
+  Variants,
 } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -20,7 +20,7 @@ const services = [
       "Mantenimiento riguroso.",
       "Máxima operatividad.",
     ],
-    image: "/images/slide_1.jpg",
+    image: "/images/landing/proyectos-2.webp",
   },
   {
     icon: HardHat,
@@ -30,7 +30,7 @@ const services = [
       "Movimiento de tierras.",
       "Altos estándares de calidad.",
     ],
-    image: "/images/slide_2.png",
+    image: "/images/landing/proyectos-3.webp",
   },
   {
     icon: Gem,
@@ -40,7 +40,7 @@ const services = [
       "Preparación de terrenos.",
       "Soporte operativo.",
     ],
-    image: "/images/slide_3.png",
+    image: "/images/landing/proyectos-4.webp",
   },
   {
     icon: Shovel,
@@ -50,7 +50,7 @@ const services = [
       "Maximización del rendimiento.",
       "Operaciones seguras.",
     ],
-    image: "/images/slide_4.png",
+    image: "/images/landing/proyectos-1.webp",
   },
 ];
 
@@ -62,7 +62,7 @@ const imageVariants = {
   exit: { opacity: 0 },
 };
 
-const kenBurnsVariants = {
+const kenBurnsVariants: Variants = {
   initial: { scale: 1.1, x: "2%" },
   animate: {
     scale: 1,
@@ -137,7 +137,10 @@ function TimerButton({
           initial={{ strokeDashoffset: 113.097 }}
           animate={controls}
           onUpdate={(latest) => {
-            if (latest.strokeDashoffset < 1 && !completionTriggered.current) {
+            if (
+              parseFloat(String(latest.strokeDashoffset)) < 1 &&
+              !completionTriggered.current
+            ) {
               completionTriggered.current = true; // Set the flag to prevent multiple calls
               onComplete();
             }
@@ -164,21 +167,21 @@ export function Services() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold leading-tight"
+            className="text-stone-400 text-lg"
           >
-            Soluciones <br />
-            <span className="text-amber-500">Integrales y a Medida</span>
+            Ofrecemos un abanico de servicios especializados para cubrir cada
+            fase de tu proyecto, garantizando eficiencia, seguridad y resultados
+            que superan las expectativas.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8 }}
-            className="text-stone-400 text-lg"
+            className="text-4xl md:text-5xl font-bold leading-tight"
           >
-            Ofrecemos un abanico de servicios especializados para cubrir cada
-            fase de tu proyecto, garantizando eficiencia, seguridad y resultados
-            que superan las expectativas.
+            Soluciones <br />
+            <span className="text-amber-500">Integrales y a Medida</span>
           </motion.p>
         </div>
 
@@ -255,7 +258,7 @@ export function Services() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.8, ease: easeInOut }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
                 className="absolute inset-0"
               >
                 <motion.div

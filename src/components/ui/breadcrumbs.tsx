@@ -38,9 +38,11 @@ const Breadcrumbs = () => {
                 </li>
                 <li>
                   {isLast ? (
-                    <span className="font-semibold text-white">{formatSegment(segment)}</span>
+                    <span className="font-semibold text-white">
+                      {formatSegment(segment)}
+                    </span>
                   ) : (
-                    <Link href={href} className="hover:text-amber-400" legacyBehavior>
+                    <Link href={href} className="hover:text-amber-400">
                       {formatSegment(segment)}
                     </Link>
                   )}

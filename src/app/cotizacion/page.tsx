@@ -45,7 +45,9 @@ const CotizacionOnline = () => {
     contactPhone: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
@@ -92,7 +94,17 @@ const CotizacionOnline = () => {
     </Card>
   );
 
-  const ServiceCard = ({ icon, title, description, onClick }: { icon: React.ReactNode, title: string, description: string, onClick: () => void }) => (
+  const ServiceCard = ({
+    icon,
+    title,
+    description,
+    onClick,
+  }: {
+    icon: React.ReactNode;
+    title: string;
+    description: string;
+    onClick: () => void;
+  }) => (
     <div
       onClick={onClick}
       className="p-6 bg-stone-900 rounded-lg border border-stone-700 hover:bg-stone-700 hover:border-amber-400 cursor-pointer transition-all duration-300 flex flex-col items-center text-center"
@@ -347,7 +359,7 @@ const CotizacionPage = () => {
       <CotizacionOnline />
       <Services />
     </>
-  )
-}
+  );
+};
 
 export default CotizacionPage;

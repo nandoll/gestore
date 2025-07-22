@@ -1,30 +1,28 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const aboutSections = [
   {
     title: "Historia y Misión",
-    description: "Descubre cómo nuestra empresa se ha convertido en un referente en el sector, desde sus humildes inicios.",
-    image: "/images/slide_4.png",
+    description:
+      "Descubre cómo nuestra empresa se ha convertido en un referente en el sector, desde sus humildes inicios.",
+    image: "/images/nosotros/historia.webp",
     href: "/nosotros/historia",
   },
   {
     title: "Certificaciones",
-    description: "Nuestro compromiso con la calidad, seguridad y el medio ambiente, avalado por reconocidas certificaciones.",
-    image: "/images/slide_5.png",
+    description:
+      "Nuestro compromiso con la calidad, seguridad y el medio ambiente, avalado por reconocidas certificaciones.",
+    image: "/images/nosotros/certificacion.webp",
     href: "/nosotros/certificaciones",
   },
   {
     title: "Equipo Profesional",
-    description: "Conoce a los expertos que impulsan nuestra empresa, su experiencia y dedicación a la excelencia.",
-    image: "/prototipos/portada1-EQUIpo-contacto.jpg",
+    description:
+      "Conoce a los expertos que impulsan nuestra empresa, su experiencia y dedicación a la excelencia.",
+    image: "/images/nosotros/equipo.webp",
     href: "/nosotros/equipo",
   },
 ];
@@ -37,7 +35,8 @@ export default function NosotrosPage() {
           Sobre <span className="text-amber-400">Nosotros</span>
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-stone-400">
-          Conoce nuestra trayectoria, valores y el equipo que hace posible el éxito de cada proyecto.
+          Conoce nuestra trayectoria, valores y el equipo que hace posible el
+          éxito de cada proyecto.
         </p>
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {aboutSections.map((section) => (
