@@ -42,10 +42,7 @@ export function Hero() {
           className="w-full h-full object-cover"
           poster="/images/slide_3.png" // Placeholder image while video loads
         >
-          <source
-            src="https://videos.pexels.com/video-files/6877351/6877351-hd_1920_1080_25fps.mp4"
-            type="video/mp4"
-          />
+          <source src="/images/hero.mp4" type="video/mp4" />
           Tu navegador no soporta el tag de video.
         </video>
       </div>

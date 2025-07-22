@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeOut, easeIn } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -36,14 +36,14 @@ const projectsData = [
 const categories = ["Minería", "Obra Civil", "Industrial"];
 
 const imageVariants = {
-  hidden: { opacity: 0, transition: { duration: 0.5, ease: "easeOut" } },
-  visible: { opacity: 0.75, transition: { duration: 0.8, ease: "easeIn" } },
+  hidden: { opacity: 0, transition: { duration: 0.5, ease: easeOut } },
+  visible: { opacity: 0.75, transition: { duration: 0.8, ease: easeIn } },
 };
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-  exit: { opacity: 0, y: -20, transition: { duration: 0.3, ease: "easeIn" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOut } },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.3, ease: easeIn } },
 };
 
 export function Projects() {

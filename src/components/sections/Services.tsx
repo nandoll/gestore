@@ -1,7 +1,12 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useAnimationControls,
+  easeInOut,
+} from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Gem, HardHat, Shovel, Tractor } from "lucide-react";
@@ -10,25 +15,41 @@ const services = [
   {
     icon: Tractor,
     title: "Alquiler de Maquinaria",
-    benefits: ["Flota moderna y diversa.", "Mantenimiento riguroso.", "Máxima operatividad."],
+    benefits: [
+      "Flota moderna y diversa.",
+      "Mantenimiento riguroso.",
+      "Máxima operatividad.",
+    ],
     image: "/images/slide_1.jpg",
   },
   {
     icon: HardHat,
     title: "Proyectos de Construcción",
-    benefits: ["Ejecución integral de obras.", "Movimiento de tierras.", "Altos estándares de calidad."],
+    benefits: [
+      "Ejecución integral de obras.",
+      "Movimiento de tierras.",
+      "Altos estándares de calidad.",
+    ],
     image: "/images/slide_2.png",
   },
   {
     icon: Gem,
     title: "Servicios Mineros",
-    benefits: ["Soluciones para el ciclo minero.", "Preparación de terrenos.", "Soporte operativo."],
+    benefits: [
+      "Soluciones para el ciclo minero.",
+      "Preparación de terrenos.",
+      "Soporte operativo.",
+    ],
     image: "/images/slide_3.png",
   },
   {
     icon: Shovel,
     title: "Operación de Equipos",
-    benefits: ["Operadores certificados.", "Maximización del rendimiento.", "Operaciones seguras."],
+    benefits: [
+      "Operadores certificados.",
+      "Maximización del rendimiento.",
+      "Operaciones seguras.",
+    ],
     image: "/images/slide_4.png",
   },
 ];
@@ -43,10 +64,33 @@ const imageVariants = {
 
 const kenBurnsVariants = {
   initial: { scale: 1.1, x: "2%" },
-  animate: { scale: 1, x: 0, transition: { duration: 15, ease: "linear", repeat: Infinity, repeatType: "mirror" } },
+  animate: {
+    scale: 1,
+    x: 0,
+    transition: {
+      duration: 15,
+      ease: "linear",
+      repeat: Infinity,
+      repeatType: "mirror",
+    },
+  },
 };
 
-function TimerButton({ index, activeIndex, isPaused, duration, onClick, onComplete }) {
+function TimerButton({
+  index,
+  activeIndex,
+  isPaused,
+  duration,
+  onClick,
+  onComplete,
+}: {
+  index: number;
+  activeIndex: number;
+  isPaused: boolean;
+  duration: number;
+  onClick: () => void;
+  onComplete: () => void;
+}) {
   const controls = useAnimationControls();
   const completionTriggered = useRef(false);
 
@@ -74,7 +118,14 @@ function TimerButton({ index, activeIndex, isPaused, duration, onClick, onComple
   return (
     <button onClick={onClick} className="relative">
       <svg width="40" height="40" viewBox="0 0 40 40" className="-rotate-90">
-        <circle cx="20" cy="20" r="18" stroke="#44403c" strokeWidth="3" fill="transparent" />
+        <circle
+          cx="20"
+          cy="20"
+          r="18"
+          stroke="#44403c"
+          strokeWidth="3"
+          fill="transparent"
+        />
         <motion.circle
           cx="20"
           cy="20"
@@ -93,7 +144,9 @@ function TimerButton({ index, activeIndex, isPaused, duration, onClick, onComple
           }}
         />
       </svg>
-      <span className="absolute inset-0 flex items-center justify-center font-bold">{index + 1}</span>
+      <span className="absolute inset-0 flex items-center justify-center font-bold">
+        {index + 1}
+      </span>
     </button>
   );
 }
@@ -123,7 +176,9 @@ export function Services() {
             transition={{ duration: 0.8 }}
             className="text-stone-400 text-lg"
           >
-            Ofrecemos un abanico de servicios especializados para cubrir cada fase de tu proyecto, garantizando eficiencia, seguridad y resultados que superan las expectativas.
+            Ofrecemos un abanico de servicios especializados para cubrir cada
+            fase de tu proyecto, garantizando eficiencia, seguridad y resultados
+            que superan las expectativas.
           </motion.p>
         </div>
 
@@ -139,12 +194,28 @@ export function Services() {
                   key={service.title}
                   onClick={() => setActiveIndex(index)}
                   className="cursor-pointer"
-                  animate={{ paddingLeft: activeIndex === index ? "1rem" : "0rem" }}
+                  animate={{
+                    paddingLeft: activeIndex === index ? "1rem" : "0rem",
+                  }}
                 >
                   <div className="py-4 border-b border-stone-800">
                     <div className="flex items-center gap-4">
-                      <service.icon className={cn("size-7 transition-colors", activeIndex === index ? "text-amber-500" : "text-stone-600")} />
-                      <p className={cn("text-2xl font-bold transition-colors", activeIndex === index ? "text-amber-500" : "text-stone-600")}>
+                      <service.icon
+                        className={cn(
+                          "size-7 transition-colors",
+                          activeIndex === index
+                            ? "text-amber-500"
+                            : "text-stone-600"
+                        )}
+                      />
+                      <p
+                        className={cn(
+                          "text-2xl font-bold transition-colors",
+                          activeIndex === index
+                            ? "text-amber-500"
+                            : "text-stone-600"
+                        )}
+                      >
                         {service.title}
                       </p>
                     </div>
@@ -158,7 +229,10 @@ export function Services() {
                         >
                           <ul className="space-y-2">
                             {service.benefits.map((benefit) => (
-                              <li key={benefit} className="flex items-center gap-2">
+                              <li
+                                key={benefit}
+                                className="flex items-center gap-2"
+                              >
                                 <div className="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
                                 {benefit}
                               </li>
@@ -181,11 +255,22 @@ export function Services() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.8, ease: "easeInOut" }}
+                transition={{ duration: 0.8, ease: easeInOut }}
                 className="absolute inset-0"
               >
-                <motion.div className="w-full h-full" variants={kenBurnsVariants} initial="initial" animate="animate">
-                  <Image src={services[activeIndex].image} alt={services[activeIndex].title} fill className="object-cover" priority={activeIndex === 0} />
+                <motion.div
+                  className="w-full h-full"
+                  variants={kenBurnsVariants}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <Image
+                    src={services[activeIndex].image}
+                    alt={services[activeIndex].title}
+                    fill
+                    className="object-cover"
+                    priority={activeIndex === 0}
+                  />
                 </motion.div>
                 <div className="absolute inset-0 bg-black/20"></div>
               </motion.div>
@@ -199,7 +284,9 @@ export function Services() {
                   isPaused={isPaused}
                   duration={DURATION}
                   onClick={() => setActiveIndex(index)}
-                  onComplete={() => setActiveIndex((prev) => (prev + 1) % services.length)}
+                  onComplete={() =>
+                    setActiveIndex((prev) => (prev + 1) % services.length)
+                  }
                 />
               ))}
             </div>
